@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetas Reposteria Zazi´s - Repostería Casera</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff9f4 0%, #ffe8f5 100%);
+            color: #5a3e36;
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header styles */
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 3.2rem;
+            color: #d94f70;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(to right, #ff9aa2, #ffb7b2, #ffdac1);
+            border-radius: 2px;
+        }
+        
+        .pastel-container {
+            max-width: 600px;
+            height: 300px;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #ffb6c1, #ffd3e0, #fff0f5);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pastel-img {
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(45deg, #f9d7e3, #ffffff);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pastel-img::before {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background: #d94f70;
+            border-radius: 100px 100px 0 0;
+            top: -20px;
+            left: 10px;
+        }
+        
+        .pastel-img::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ffb347;
+            border-radius: 50%;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 
+                40px 0 0 0 #ff6961,
+                -40px 0 0 0 #77dd77,
+                20px 40px 0 0 #aec6cf,
+                -20px 40px 0 0 #ffb347,
+                0 80px 0 0 #ff6961;
+        }
+        
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            justify-content: space-around;
+            background: #fff;
+            border-radius: 50px;
+            padding: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #d94f70;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+        }
+        
+        .nav-item:hover {
+            transform: translateY(-5px);
+            color: #ff6b9d;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            background: #ffeaf1;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .nav-text {
+            font-size: 1rem;
+        }
+        
+        /* Categories */
+        .category-section {
+            margin-bottom: 60px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-title {
+            font-size: 2.5rem;
+            color: #d94f70;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .category-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, #ff9aa2, #ffb7b2, #ffdac1);
+            border-radius: 2px;
+        }
+        
+        .welcome-text {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: #7a5d58;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .recipe-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .recipe-img {
+            height: 180px;
+            background: linear-gradient(45deg, #ffdfd3, #fec8d8);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .recipe-img::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+        
+        .recipe-icon {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 1;
+        }
+        
+        .recipe-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .recipe-title {
+            font-size: 1.4rem;
+            color: #d94f70;
+            margin-bottom: 15px;
+        }
+        
+        .recipe-desc {
+            color: #7a5d58;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .recipe-ingredients {
+            background: #f9f4f6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .recipe-ingredients h4 {
+            color: #d94f70;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .recipe-ingredients ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #7a5d58;
+        }
+        
+        .recipe-ingredients li {
+            margin-bottom: 5px;
+        }
+        
+        .recipe-time {
+            display: flex;
+            align-items: center;
+            color: #d94f70;
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .recipe-time i {
+            margin-right: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #7a5d58;
+            margin-top: 30px;
+            border-top: 1px solid #ffe8e8;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #ffeaf1;
+            border-radius: 50%;
+            color: #d94f70;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: #d94f70;
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .recipe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+            
+            .nav-menu {
+                padding: 10px;
+                max-width: 500px;
+            }
+            
+            .category-section {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-menu {
+                padding: 8px;
+                border-radius: 30px;
+            }
+            
+            .nav-item {
+                padding: 5px 10px;
+            }
+            
+            .nav-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .category-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>reposteria recetas zazús</h1>
+            <div class="pastel-container">
+                <div class="pastel-img"></div>
+            </div>
+        </header>
+        
+        <nav class="nav-menu">
+            <a href="#" class="nav-item">
+                <div class="nav-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span class="nav-text">Menú</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <span class="nav-text">Búsqueda</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="nav-text">Contacto</span>
+            </a>
+        </nav>
+        
+        <section class="category-section">
+            <h2 class="category-title">Galletas</h2>
+            <p class="welcome-text">Descubre nuestras deliciosas recetas de galletas caseras, perfectas para acompañar tu café o té. Desde las clásicas con chispas de chocolate hasta opciones sin horno, tenemos algo para todos los gustos.</p>
+            
+            <div class="recipe-grid">
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <i class="fas fa-cookie recipe-icon"></i>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Galletas de Chispas de Chocolate</h3>
+                        <p class="recipe-desc">Las clásicas galletas americanas con trocitos de chocolate, crujientes por fuera y suaves por dentro.</p>
+                        <div class="recipe-ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>225g de mantequilla</li>
+                                <li>200g de azúcar moreno</li>
+                                <li>2 huevos</li>
+                                <li>350g de harina</li>
+                                <li>200g de chispas de chocolate</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-time">
+                            <i class="fas fa-clock"></i> Tiempo: 25 min
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <i class="fas fa-cookie-bite recipe-icon"></i>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Galletas de Mantequilla</h3>
+                        <p class="recipe-desc">Galletas mantecosas y delicadas que se derriten en tu boca con cada bocado.</p>
+                        <div class="recipe-ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>250g de mantequilla</li>
+                                <li>120g de azúcar glas</li>
+                                <li>1 huevo</li>
+                                <li>350g de harina</li>
+                                <li>Esencia de vainilla</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-time">
+                            <i class="fas fa-clock"></i> Tiempo: 30 min
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <i class="fas fa-ice-cream recipe-icon"></i>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Galletas Sin Horno</h3>
+                        <p class="recipe-desc">Deliciosas galletas que no requieren horno, perfectas para días calurosos.</p>
+                        <div class="recipe-ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>200g de galletas trituradas</li>
+                                <li>100g de mantequilla derretida</li>
+                                <li>200g de queso crema</li>
+                                <li>100g de azúcar</li>
+                                <li>Frutos rojos</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-time">
+                            <i class="fas fa-clock"></i> Tiempo: 15 min + refrigeración
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <i class="fas fa-seedling recipe-icon"></i>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Galletas de Avena y Pasas</h3>
+                        <p class="recipe-desc">Saludables y deliciosas galletas de avena con pasas y nueces.</p>
+                        <div class="recipe-ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>150g de avena</li>
+                                <li>100g de harina integral</li>
+                                <li>120g de miel</li>
+                                <li>80g de pasas</li>
+                                <li>50g de nueces picadas</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-time">
+                            <i class="fas fa-clock"></i> Tiempo: 20 min
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="category-section">
+            <h2 class="category-title">Pasteles</h2>
+            <p class="welcome-text">Explora nuestra colección de exquisitos pasteles para todas las ocasiones. Desde el clásico pastel de chocolate hasta elaboradas creaciones, tenemos recetas para todos los niveles de habilidad.</p>
+            
+            <div class="recipe-grid">
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <i class="fas fa-birthday-cake recipe-icon"></i>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Pastel Red Velvet</h3>
+                        <p class="recipe-desc">El clásico pastel de terciopelo rojo con frosting de queso crema.</p>
+                        <div class="recipe-ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>250g harina</li>
+                                <li>200g azúcar</li>
+                                <li>2 huevos</li>
+                                <li>Colorante rojo</li>
+                                <li>Queso crema para frosting</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-time">
+                            <i class="fas fa-clock"></i> Tiempo: 60 min
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <i class="fas fa-cake-candles recipe-icon"></i>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Pastel de Tres Leches</h3>
+                        <p class="recipe-desc">Suave bizcocho bañado en una mezcla de tres leches y coronado con merengue.</p>
+                        <div class="recipe-ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>5 huevos</li>
+                                <li>200g azúcar</li>
+                                <li>Leche evaporada</li>
+                                <li>Leche condensada</li>
+                                <li>Crema para batir</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-time">
+                            <i class="fas fa-clock"></i> Tiempo: 90 min
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <i class="fas fa-mug-hot recipe-icon"></i>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Pastel de Chocolate</h3>
+                        <p class="recipe-desc">Intenso pastel de chocolate con ganache y relleno de crema.</p>
+                        <div class="recipe-ingredients">
+                            <h4>Ingredientes:</h4>
+                            <ul>
+                                <li>200g chocolate negro</li>
+                                <li>4 huevos</li>
+                                <li>150g mantequilla</li>
+                                <li>150g azúcar</li>
+                                <li>Crema para ganache</li>
+                            </ul>
+                        </div>
